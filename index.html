@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="todoApplication">
+    <head>
+        <title>Todo List</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
+    </head>
+    <body >
+        <div ng-controller="todoController">
+          Task:<input type="text" ng-model="todo.task"></input> <br>
+          Due:<input type="text" ng-model="todo.due"></input><br>
+          <input type="button" value="Add task" ng-click="addTask()" ng-disabled="addTaskButton"></input>
+          <input type="button" value="Update task" ng-click="updateTask(todo._id)" ng-disabled="updateTaskButton"></input>
+          <table>
+        <tr><th>Task</th><th>Due By</th></tr>
+        <tr ng-repeat="todo in List">
+          <td>{{todo.task}}</td>
+          <td>{{todo.due}}</td>
+          <td><input type="button" value="delete" ng-click="deleteTask(todo._id)"></input></td>
+          <td><input type="button" value="edit" ng-click="editTask(todo._id);disableButton();"></input></td>
+        </tr>
+        </table>
+        </div>
+        <script src="/controllers/todo.js" type="text/javascript"></script>
+
+    </body>
+</html>
