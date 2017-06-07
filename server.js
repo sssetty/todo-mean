@@ -6,7 +6,13 @@ var fs=require('fs');
 var db=require('./dbConnect.js');
 var app=express();
 var bodyParser=require('body-parser');
-app.listen(3000);
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+ 
+app.listen(server_port, server_ip_address, function () {
+  console.log( "Listening on " + server_ip_address + ", port " + server_port )
+});
+//app.listen(3000);
 console.log("Server is running");
 app.use(express.static('controllers'));
 app.use(bodyParser.json());
