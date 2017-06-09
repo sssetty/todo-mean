@@ -20,7 +20,7 @@ console.log("There was an error");
 $scope.getTasks();
 
 $scope.addTask=function(){
-  console.log($scope.todo);
+//  console.log($scope.todo);
   $http({
     method : 'POST',
     url : '/todoList',
